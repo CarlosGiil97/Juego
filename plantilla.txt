@@ -1,0 +1,5 @@
+commit 3897e6185f0afcbbd5c9ee12e802966e50ad564e
+Author: Carlos <carlosgilterriente@gmail.com>
+Date:   Tue Oct 18 09:52:24 2016 +0200
+
+    ventana.py
