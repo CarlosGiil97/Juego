@@ -19,6 +19,15 @@ class Mario(pygame.sprite.Sprite):
         self.rect.centerx = WIDTH / 2
         self.rect.centery = HEIGHT / 2
         self.speed = [0.5, -0.5] 
+    def actualizar(self, time):
+        self.rect.centerx += self.speed[0] * time
+        self.rect.centery += self.speed[1] * time
+        if self.rect.left <= 0 or self.rect.right >= WIDTH:
+            self.speed[0] = -self.speed[0]
+            self.rect.centerx += self.speed[0] * time
+        if self.rect.top <= 0 or self.rect.bottom >= HEIGHT:
+            self.speed[1] = -self.speed[1]
+            self.rect.centery += self.speed[1] * time
 # ---------------------------------------------------------------------
  
 # Funciones
@@ -42,13 +51,14 @@ def main():
  
     background_image = load_image('imagenes/mario3.jpg')
     mario = Mario()
-
+    clock = pygame.time.Clock()
     while True:
+	time = clock.tick(60)
         for eventos in pygame.event.get():
             if eventos.type == QUIT:
                 sys.exit(0)
  
-        
+        mario.actualizar(time)
 	screen.blit(background_image, (0, 0))
 	screen.blit(mario.image, mario.rect)
         pygame.display.flip()
