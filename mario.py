@@ -11,7 +11,14 @@ HEIGHT = 480
  
 # Clases
 # ---------------------------------------------------------------------
- 
+class Mario(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = load_image("imagenes/bros.png", True)
+        self.rect = self.image.get_rect()
+        self.rect.centerx = WIDTH / 2
+        self.rect.centery = HEIGHT / 2
+        self.speed = [0.5, -0.5] 
 # ---------------------------------------------------------------------
  
 # Funciones
@@ -34,13 +41,16 @@ def main():
     pygame.display.set_caption("Juego Carlos Gil")
  
     background_image = load_image('imagenes/mario3.jpg')
- 
+    mario = Mario()
+
     while True:
         for eventos in pygame.event.get():
             if eventos.type == QUIT:
                 sys.exit(0)
  
-        screen.blit(background_image, (0, 0))
+        
+	screen.blit(background_image, (0, 0))
+	screen.blit(mario.image, mario.rect)
         pygame.display.flip()
     return 0
  
