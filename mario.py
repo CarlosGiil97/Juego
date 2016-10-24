@@ -57,7 +57,7 @@ def load_image(filename, transparent=False):
 def main():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Juego Carlos Gil")
- 
+    imagen = pygame.image.load("imagenes/enemigo.png") 
     background_image = load_image('imagenes/mario3.jpg')
     mario = Mario()
     clock = pygame.time.Clock()
@@ -70,7 +70,8 @@ def main():
         mario.actualizar(time)
 	screen.blit(background_image, (0, 0))
 	screen.blit(mario.image, mario.rect)
-        pygame.display.flip()
+        screen.blit(imagen, (100,335))
+	pygame.display.flip()
     return 0
  
 if __name__ == '__main__':
