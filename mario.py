@@ -14,20 +14,29 @@ HEIGHT = 480
 class Mario(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = load_image("imagenes/bros.png", True)
+        self.image = load_image("imagenes/yoshi.png", True)
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH / 2
         self.rect.centery = HEIGHT / 2
         self.speed = [0.5, -0.5] 
     def actualizar(self, time):
-        self.rect.centerx += self.speed[0] * time
-        self.rect.centery += self.speed[1] * time
-        if self.rect.left <= 0 or self.rect.right >= WIDTH:
-            self.speed[0] = -self.speed[0]
-            self.rect.centerx += self.speed[0] * time
-        if self.rect.top <= 0 or self.rect.bottom >= HEIGHT:
-            self.speed[1] = -self.speed[1]
-            self.rect.centery += self.speed[1] * time
+	 keys = pygame.key.get_pressed() 
+	 if keys[K_DOWN]: 
+                self.rect.y += 6 
+         if self.rect.y>=480: 
+                self.rect.y -= 6 
+         if keys[K_UP]: 
+                self.rect.y -= 6 
+         if self.rect.y <=18: 
+                self.rect.y += 6 
+         if keys[K_RIGHT]: 
+                self.rect.x += 6 
+	 if self.rect.x>=522: 
+                self.rect.x -= 6 
+         if keys[K_LEFT]: 
+            self.rect.x -= 6 
+         if self.rect.x<=47:     
+            self.rect.x += 6 
 # ---------------------------------------------------------------------
  
 # Funciones
